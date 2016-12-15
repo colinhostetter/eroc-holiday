@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EROC Christmas Test</title>
+  <style>
+    @font-face {
+      font-family: "Marydale";
+      src: url("Marydale.ttf");
+    }
+    body {
+      margin: 0;
+      padding: 2px;
+    }
+    .app-container, #eroc-canvas {
+      width: 620px;
+      max-width: 100%;
+    }
+    #eroc-canvas {
+      width: 610px;
+      max-width: 100%;
+      margin: auto;
+      display: block;
+    }
+    #eroc-canvas-controls {
+      margin: 10px 0px;
+    }
+    #eroc-canvas-controls .control {
+      margin: 5px 0px;
+    }
+    @media (max-width: 400px) {
+      #eroc-canvas-controls select {
+        display: block;
+      }
+    }
+    #eroc-canvas-buttons {
+      margin: 10px 0px;
+      text-align: center;
+    }
+    #eroc-canvas-buttons button {
+      background: #eee;
+      border: 1px solid black;
+      padding: 5px 15px;
+      font-size: 24px;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 1px 1px 1px 0px rgba(0,0,0,0.5);
+      transition: background 0.1s linear, transform 0.1s linear;
+    }
+    #eroc-canvas-buttons button:hover {
+      background: #ccc;
+    }
+    #eroc-canvas-buttons button:active {
+      transform: translateY(1px);
+      box-shadow: none;
+    }
+    #eroc-canvas-buttons button i.fa {
+      margin-right: 5px;
+    }
+    #eroc-canvas-buttons #btn-share {
+      background: #3b5998;
+      color: white;
+    }
+    #eroc-canvas-buttons #btn-share:hover {
+      background: #2b4782;
+    }
+    #uploading-modal-outer.active #uploading-modal-inner {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 20px;
+      max-width: 100%;
+      border-radius: 5px;
+      border: 1px solid #aaa;
+      font-size: 28px;
+      width: 400px;
+      z-index: 99999;
+    }
+    #uploading-modal-outer {
+      display: none;
+      transition: background 0.25s linear;
+    }
+    #uploading-modal-outer.active {
+      display: initial;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      z-index: 99998;
+    }
+    input, select {
+      /* prevent ios zoom on input focus */
+      font-size: 16px;
+    }
+  </style>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="app-container">
+  <div id="eroc-canvas-controls">
+    <div class="control">
+      <label for="image">Choose a background:</label>
+      <select id="image">
+        <option value="christmascardFB.png">Christmas</option>
+        <option value="hanukkahcardFB.png">Hanukkah</option>
+        <option value="kwanzaacardFB.png">Kwanzaa</option>
+        <option value="christmahanahkwanzikacardFB.png">Christmahanahkwanzika</option>
+        <option value="genericsnowflakecardFB.png" selected>Snowflake</option>
+        <option value="dumpsterfirecardFB.png">Dumpster Fire</option>
+        <option value="babygoatcardFB.png">Baby Goat</option>
+        <option value="ottercardFB.png">Otter Taking a Shower</option>
+      </select>
+    </div>
+    <div class="control">
+      <label for="holiday">Choose a holiday:</label>
+      <select id="holiday">
+        <option value="" selected>Winter-related event</option>
+        <option value="Christmas">Christmas</option>
+        <option value="Hanukkah">Hanukkah</option>
+        <option value="Ramadan">Ramadan</option>
+        <option value="Kwanzaa">Kwanzaa</option>
+        <option value="Christmahanakwanzika">Christmahanakwanzika</option>
+        <option value="the New Year">The New Year</option>
+        <option value="anything but 2016">Anything but 2016</option>
+        <option value="Boxing Day">Boxing Day</option>
+        <option value="Dumpster Fire aka 2016">Dumpster Fire aka 2016</option>
+        <option value="Winter Solstice">Winter Solstice</option>
+        <option value="Other" id="holiday-other">Other</option>
+      </select>
+    </div>
+    <div class="control">
+      <label for="gift">Choose a gift:</label>
+      <select id="gift" selected>
+        <option value="">Thing you want</option>
+        <option value="the toppling of the patriarchy">The toppling of the patriarchy</option>
+        <option value="gender equality">Gender equality</option>
+        <option value="the dissipation of prejudice">The dissipation of prejudice</option>
+        <option value="Beyonce's sick dance moves">Beyonce's sick dance moves</option>
+        <option value="an otter taking a shower">An otter taking a shower</option>
+        <option value="pumpkin spice year round">Pumpkin spice year round</option>
+        <option value="a dress with pockets">A dress with pockets</option>
+        <option value="a Spice Girls reunion">A Spice Girls reunion</option>
+        <option value="a rewrite of season 9 of HIMYM">A rewrite of season 9 of HIMYM</option>
+        <option value="2016 to be over">2016 to be over</option>
+        <option value="equal pay for equal work">Equal pay for equal work</option>
+        <option value="a baby goat">A baby goat</option>
+      </select>
+    </div>
+  </div>
+  <canvas width="1200" height="630" id="eroc-canvas"></canvas>
+  <div id="eroc-canvas-buttons">
+    <button id="btn-download"><i class="fa fa-download"></i> Download</button>
+    <button id="btn-share"><i class="fa fa-facebook"></i> Share on Facebook</button>
+  </div>
+  <div id="uploading-modal-outer">
+    <div id="uploading-modal-inner">
+      Uploading your masterpiece, just a moment... <i class="fa fa-spin fa-spinner"></i>
+    </div>
+  </div>
+  <script src="app.min.js"></script>
+</body>
+</html>
