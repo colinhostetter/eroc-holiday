@@ -6,14 +6,9 @@ body {
   margin: 0;
   padding: 2px;
 }
-.app-container, #eroc-canvas {
-  width: 620px;
-  max-width: 100%;
-}
 #eroc-canvas {
-  width: 610px;
+  zoom: 50%;
   max-width: 100%;
-  margin: auto;
   display: block;
 }
 #eroc-canvas-controls {
@@ -30,6 +25,7 @@ body {
 #eroc-canvas-buttons {
   margin: 10px 0px;
   text-align: center;
+  max-width: 630px;
 }
 #eroc-canvas-buttons button {
   background: #eee;
