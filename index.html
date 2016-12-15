@@ -3,101 +3,7 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EROC Christmas Test</title>
-  <style>
-    @font-face {
-      font-family: "Marydale";
-      src: url("Marydale.ttf");
-    }
-    body {
-      margin: 0;
-      padding: 2px;
-    }
-    .app-container, #eroc-canvas {
-      width: 620px;
-      max-width: 100%;
-    }
-    #eroc-canvas {
-      width: 610px;
-      max-width: 100%;
-      margin: auto;
-      display: block;
-    }
-    #eroc-canvas-controls {
-      margin: 10px 0px;
-    }
-    #eroc-canvas-controls .control {
-      margin: 5px 0px;
-    }
-    @media (max-width: 400px) {
-      #eroc-canvas-controls select {
-        display: block;
-      }
-    }
-    #eroc-canvas-buttons {
-      margin: 10px 0px;
-      text-align: center;
-    }
-    #eroc-canvas-buttons button {
-      background: #eee;
-      border: 1px solid black;
-      padding: 5px 15px;
-      font-size: 24px;
-      border-radius: 5px;
-      cursor: pointer;
-      box-shadow: 1px 1px 1px 0px rgba(0,0,0,0.5);
-      transition: background 0.1s linear, transform 0.1s linear;
-    }
-    #eroc-canvas-buttons button:hover {
-      background: #ccc;
-    }
-    #eroc-canvas-buttons button:active {
-      transform: translateY(1px);
-      box-shadow: none;
-    }
-    #eroc-canvas-buttons button i.fa {
-      margin-right: 5px;
-    }
-    #eroc-canvas-buttons #btn-share {
-      background: #3b5998;
-      color: white;
-    }
-    #eroc-canvas-buttons #btn-share:hover {
-      background: #2b4782;
-    }
-    #uploading-modal-outer.active #uploading-modal-inner {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      background: rgba(255, 255, 255, 0.95);
-      padding: 20px;
-      max-width: 100%;
-      border-radius: 5px;
-      border: 1px solid #aaa;
-      font-size: 28px;
-      width: 400px;
-      z-index: 99999;
-    }
-    #uploading-modal-outer {
-      display: none;
-      transition: background 0.25s linear;
-    }
-    #uploading-modal-outer.active {
-      display: initial;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.7);
-      z-index: 99998;
-    }
-    input, select {
-      /* prevent ios zoom on input focus */
-      font-size: 16px;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body class="app-container">
@@ -158,7 +64,11 @@
   </div>
   <div id="uploading-modal-outer">
     <div id="uploading-modal-inner">
-      Uploading your masterpiece, just a moment... <i class="fa fa-spin fa-spinner"></i>
+      Uploading your masterpiece, just a moment... <i class="fa fa-spin fa-spinner"></i><br>
+      <br>
+      In the mean time, please enjoy this baby elephant GIF.<br>
+      <br>
+      <video src="elephant.mp4" autoplay="autoplay" loop="loop"></video>
     </div>
   </div>
   <script src="app.min.js"></script>
