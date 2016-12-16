@@ -1,0 +1,69 @@
+<div id="eroc-holiday-app">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <div id="eroc-canvas-controls">
+    <div class="control">
+      <label for="image">Choose a background:</label>
+      <select id="image">
+        <option value="christmascardFB.png">Christmas</option>
+        <option value="hanukkahcardFB.png">Hanukkah</option>
+        <option value="kwanzaacardFB.png">Kwanzaa</option>
+        <option value="christmahanahkwanzikacardFB.png">Christmahanahkwanzika</option>
+        <option value="genericsnowflakecardFB.png" selected>Snowflake</option>
+        <option value="dumpsterfirecardFB.png">Dumpster Fire</option>
+        <option value="babygoatcardFB.png">Baby Goat</option>
+        <option value="ottercardFB.png">Otter Taking a Shower</option>
+      </select>
+    </div>
+    <div class="control">
+      <label for="holiday">Choose a holiday:</label>
+      <select id="holiday">
+        <option value="" selected>Winter-related event</option>
+        <option value="Christmas">Christmas</option>
+        <option value="Hanukkah">Hanukkah</option>
+        <option value="Kwanzaa">Kwanzaa</option>
+        <option value="Christmahanakwanzika">Christmahanakwanzika</option>
+        <option value="the New Year">The New Year</option>
+        <option value="anything but 2016">Anything but 2016</option>
+        <option value="Boxing Day">Boxing Day</option>
+        <option value="Dumpster Fire aka 2016">Dumpster Fire aka 2016</option>
+        <option value="Winter Solstice">Winter Solstice</option>
+        <option value="Other" id="holiday-other">Other</option>
+      </select>
+    </div>
+    <div class="control" id="other-container">
+      <label for="other">Other: <input name="other" type="text" id="other">
+    </div>
+    <div class="control">
+      <label for="gift">Choose a gift:</label>
+      <select id="gift" selected>
+        <option value="">Thing you want</option>
+        <option value="the toppling of the patriarchy">The toppling of the patriarchy</option>
+        <option value="gender equality">Gender equality</option>
+        <option value="the dissipation of prejudice">The dissipation of prejudice</option>
+        <option value="Beyonce's sick dance moves">Beyonce's sick dance moves</option>
+        <option value="an otter taking a shower">An otter taking a shower</option>
+        <option value="pumpkin spice year round">Pumpkin spice year round</option>
+        <option value="a dress with pockets">A dress with pockets</option>
+        <option value="a Spice Girls reunion">A Spice Girls reunion</option>
+        <option value="a rewrite of season 9 of HIMYM">A rewrite of season 9 of HIMYM</option>
+        <option value="2016 to be over">2016 to be over</option>
+        <option value="equal pay for equal work">Equal pay for equal work</option>
+        <option value="a baby goat">A baby goat</option>
+      </select>
+    </div>
+  </div>
+  <canvas width="1200" height="630" id="eroc-canvas"></canvas>
+  <div id="eroc-canvas-buttons">
+    <button id="btn-download"><i class="fa fa-download"></i> Download</button>
+    <button id="btn-share"><i class="fa fa-facebook"></i> Share on Facebook</button>
+  </div>
+  <div id="uploading-modal-outer">
+    <div id="uploading-modal-inner">
+      Uploading your masterpiece, just a moment... <i class="fa fa-spin fa-spinner"></i><br>
+      <br>
+      In the meantime, please enjoy this baby elephant GIF.<br>
+      <br>
+      <video src="elephant.mp4" autoplay="autoplay" loop="loop"></video>
+    </div>
+  </div>
+</div>
