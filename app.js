@@ -13,8 +13,9 @@ function bootstrap() {
   if (htmlxhr.readyState === XMLHttpRequest.DONE && cssxhr.readyState === XMLHttpRequest.DONE) {
     const target = document.getElementById("eroc-holiday-app-target");
     const style = document.createElement("style");
-    style.innerText = cssxhr.responseText;
-    document.body.insertBefore(style, target);
+    style.innerHTML = cssxhr.responseText;
+    if (style.styleSheet) style.styleSheet.cssText = cssxhr.responseText;   // Old IE
+    document.head.appendChild(style);
     const container = document.createElement("div");
     container.innerHTML = htmlxhr.responseText;
     document.body.insertBefore(container, target);
@@ -23,7 +24,8 @@ function bootstrap() {
     const ctx = canvas.getContext("2d");
 
     const selects = document.querySelectorAll("#eroc-canvas-controls select")
-    for (let select of selects) {
+    for (var i = 0; i < selects.length; i++) {
+      const select = selects[i];
       select.addEventListener("change", ev => {
         selections[ev.target.id] = ev.target.value;
         if (ev.target.id === "holiday" && ev.target.value !== "Other") {
@@ -62,11 +64,11 @@ function bootstrap() {
 
     document.getElementById("btn-share").addEventListener("click", ev => {
       const modal = document.getElementById("uploading-modal-outer");
-      modal.classList = ["active"];
+      modal.className = "active";
       upload(canvas, (err, url) => {
         if (err) {
           console.log(err);
-          modal.classList = [];
+          modal.classList = "";
           alert("Sorry, something went wrong when we tried to upload your image! Please try again.");
         } else {
           share(url);

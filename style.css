@@ -71,7 +71,7 @@
   transition: background 0.25s linear;
 }
 #uploading-modal-outer.active {
-  display: initial;
+  display: block;
   position: fixed;
   top: 0;
   left: 0;
