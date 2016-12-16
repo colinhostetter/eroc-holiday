@@ -22,7 +22,8 @@ function bootstrap() {
     const canvas = document.getElementById("eroc-canvas");
     const ctx = canvas.getContext("2d");
 
-    document.querySelectorAll("#eroc-canvas-controls select").forEach(select => {
+    const selects = document.querySelectorAll("#eroc-canvas-controls select")
+    for (let select of selects) {
       select.addEventListener("change", ev => {
         selections[ev.target.id] = ev.target.value;
         if (ev.target.id === "holiday" && ev.target.value !== "Other") {
@@ -40,7 +41,7 @@ function bootstrap() {
           render(ctx);
         }
       })
-    })
+    }
 
     const otherCallback = ev => {
       if (selections.holidayOther) selections.holiday = ev.target.value;
