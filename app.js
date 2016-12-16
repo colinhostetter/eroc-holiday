@@ -1,11 +1,11 @@
 "use strict";
 
 const htmlxhr = new XMLHttpRequest();
-htmlxhr.open("GET", "//s3.amazonaws.com/eroc-holiday/demo/ui.html?" + Date.now());
+htmlxhr.open("GET", "//s3.amazonaws.com/eroc-holiday/ui.html?" + Date.now());
 htmlxhr.send();
 htmlxhr.onreadystatechange = bootstrap;
 const cssxhr = new XMLHttpRequest();
-cssxhr.open("GET", "//s3.amazonaws.com/eroc-holiday/demo/style.css?" + Date.now());
+cssxhr.open("GET", "//s3.amazonaws.com/eroc-holiday/style.css?" + Date.now());
 cssxhr.send();
 cssxhr.onreadystatechange = bootstrap;
 
@@ -86,8 +86,11 @@ const selections = {
 
 function loadBackground(src, ctx) {
   selections.img = new Image();
-  selections.img.src = "img/" + src;
-  selections.img.onload = () => render(ctx);
+  selections.img.src = "//s3.amazonaws.com/eroc-holiday/img/" + src;
+  selections.img.onload = () => {
+    // make sure this image is still selected
+    if (selections.image === src) render(ctx);
+  }
 }
 
 function render(ctx) {
