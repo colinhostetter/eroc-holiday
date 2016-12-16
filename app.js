@@ -146,7 +146,8 @@ function share(imgUrl) {
   shareUrl += "&name=" + encodeURIComponent("Donate to End Rape on Campus this holiday season!");
   shareUrl += "&picture=" + imgUrl;
   shareUrl += "&description=" + encodeURIComponent("End Rape on Campus needs our support now more than ever. Please consider making a gift this holiday season to ensure ALL students can receive an education free from sexual violence. You can make your own custom card at endrapeoncampus.org/holiday");
-  shareUrl += "&link=http://www.endrapeoncampus.org/holiday";
+  shareUrl += "&link=" + encodeURIComponent("http://endrapeoncampus.org/holiday");
+  shareUrl += "&redirect_uri=" + encodeURIComponent("http://endrapeoncampus.org/holiday");
   window.location.href = shareUrl;
 }
 
